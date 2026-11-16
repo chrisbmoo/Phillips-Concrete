@@ -1,0 +1,14 @@
+{
+  "name": "phillips-concrete",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "fetch-images": "node scripts/fetch-images.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.4.12"
+  }
+}

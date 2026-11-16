@@ -1,0 +1,19 @@
+{
+  "name": "Phillips Concrete Constructions",
+  "legalName": "Phillips Concrete Constructions Pty Ltd",
+  "tagline": "Residential – Commercial – Civil",
+  "url": "https://www.phillipsconcrete.com.au",
+  "contactName": "Andrew",
+  "phone": "0417 005 081",
+  "email": "admin@phillipsconcrete.com.au",
+  "serviceArea": "Geelong and Melbourne",
+  "yearsExperience": "15",
+  "facebook": "https://www.facebook.com/pconcrete/",
+  "instagram": "https://www.instagram.com/phillipsconcreteconstructions/",
+  "heroImage": "/images/Photo-2g.jpg",
+  "contactForm": {
+    "action": "https://api.web3forms.com/submit",
+    "accessKey": "REPLACE_WITH_WEB3FORMS_KEY"
+  },
+  "credit": { "label": "Website by moomedia", "url": "https://www.moomedia.com.au" }
+}

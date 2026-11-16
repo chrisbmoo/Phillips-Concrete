@@ -1,0 +1,41 @@
+---
+import { site, services, phoneHref } from '../lib/content.js';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="wrap cols">
+    <div>
+      <img src="/images/Phillips_Concrete_pty_ltd_logo.png" alt={site.legalName} class="flogo" />
+      <p>Residential, commercial and civil concreting across {site.serviceArea} for more than {site.yearsExperience} years.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>{services.map((s) => <li><a href={`/${s.slug}/`}>{s.title}</a></li>)}</ul>
+    </div>
+    <div>
+      <h4>Contact {site.contactName}</h4>
+      <ul>
+        <li><a href={phoneHref}>{site.phone}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={site.facebook} rel="noopener">Facebook</a> · <a href={site.instagram} rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>© {year} {site.legalName}</span>
+    <a href={site.credit.url} rel="noopener">{site.credit.label}</a>
+  </div>
+</footer>
+
+<style>
+  footer { background: var(--ink); color: #aaa; padding: 64px 0 28px; font-size: .95rem; }
+  .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; }
+  .flogo { height: 44px; width: auto; margin-bottom: 16px; }
+  h4 { color: #fff; margin: 0 0 14px; font-size: 1rem; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin-bottom: 8px; }
+  a { color: #ccc; text-decoration: none; }
+  a:hover { color: var(--brand); }
+  .legal { display: flex; justify-content: space-between; border-top: 1px solid #2a2a2a; margin-top: 48px; padding-top: 22px; font-size: .85rem; }
+  @media (max-width: 800px) { .cols { grid-template-columns: 1fr; gap: 32px; } .legal { flex-direction: column; gap: 8px; } }
+</style>

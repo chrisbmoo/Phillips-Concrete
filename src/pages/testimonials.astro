@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { testimonials } from '../lib/content.js';
+---
+<Base title="Testimonials">
+  <div class="page-head"><div class="wrap"><h1>Testimonials</h1><p>Don't just take our word for it.</p></div></div>
+  <section>
+    <div class="wrap list">
+      {testimonials.map((t) => (
+        <blockquote><p>“{t.quote}”</p><cite>{t.name}, {t.suburb}</cite></blockquote>
+      ))}
+    </div>
+  </section>
+  <CallToAction />
+</Base>
+<style>
+  .list { columns: 2 360px; column-gap: 24px; }
+  blockquote { break-inside: avoid; margin: 0 0 24px; background: var(--bg-alt); padding: 30px; border-radius: var(--radius); border-left: 4px solid var(--brand); }
+  blockquote p { margin: 0 0 14px; }
+  cite { font-style: normal; font-weight: 700; color: var(--ink); }
+</style>

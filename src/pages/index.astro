@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { site, testimonials, phoneHref } from '../lib/content.js';
+const featured = testimonials.slice(0, 3);
+---
+<Base>
+  <section class="hero" style={`background-image:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.2) 100%),url(${site.heroImage})`}>
+    <div class="wrap">
+      <span class="eyebrow">{site.tagline}</span>
+      <h1>Quality concreting across {site.serviceArea}</h1>
+      <p>Welcome to {site.legalName}. Exposed aggregate, coloured concrete, driveways, crossovers, slabs and paths — finished to the highest standard.</p>
+      <div class="btns">
+        <a class="btn" href="/contact/">Get a free quote</a>
+        <a class="btn ghost" href={phoneHref}>Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <span class="eyebrow">What we do</span>
+      <h2>Our services</h2>
+      <ServiceGrid />
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Testimonials</span>
+      <h2>What our clients say</h2>
+      <div class="quotes">
+        {featured.map((t) => (
+          <blockquote>
+            <p>“{t.quote.length > 220 ? t.quote.slice(0, t.quote.lastIndexOf(' ', 220)) + '…' : t.quote}”</p>
+            <cite>{t.name}, {t.suburb}</cite>
+          </blockquote>
+        ))}
+      </div>
+      <p><a href="/testimonials/" class="link">Read all testimonials →</a></p>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>
+
+<style>
+  .hero { min-height: 78vh; display: flex; align-items: center; background-size: cover; background-position: center; color: #ddd; }
+  .hero h1 { color: #fff; max-width: 760px; }
+  .hero p { font-size: 1.15rem; max-width: 600px; margin: 0 0 2em; }
+  .hero .eyebrow { color: var(--brand); }
+  .btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 8px 0 28px; }
+  blockquote { margin: 0; background: var(--bg-alt); padding: 28px; border-radius: var(--radius); border-left: 4px solid var(--brand); }
+  blockquote p { margin: 0 0 14px; }
+  cite { font-style: normal; font-weight: 700; color: var(--ink); font-size: .92rem; }
+  .link { font-weight: 700; color: var(--brand-dark); text-decoration: none; }
+</style>

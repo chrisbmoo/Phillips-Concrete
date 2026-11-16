@@ -1,0 +1,38 @@
+---
+// One template for every service page. Content comes from src/content/services/*.md
+// URLs stay the same as the old WordPress site, e.g. /exposed-aggregate/
+import Base from '../layouts/Base.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { services } from '../lib/content.js';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { service: s.slug }, props: { s } }));
+}
+const { s } = Astro.props;
+const others = services.filter((o) => o.slug !== s.slug);
+---
+<Base title={s.title} description={s.summary}>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">Services</span><h1>{s.title}</h1>{s.subtitle && <p>{s.subtitle}</p>}</div></div>
+  <section>
+    <div class="wrap split">
+      <div class="prose"><s.Content /><a class="btn" href="/contact/">Request a quote</a></div>
+      <img src={s.image} alt={s.title} />
+    </div>
+  </section>
+  <section class="alt">
+    <div class="wrap">
+      <h2>Other services</h2>
+      <ul class="others">{others.map((o) => <li><a href={`/${o.slug}/`}>{o.title}</a></li>)}</ul>
+    </div>
+  </section>
+  <CallToAction />
+</Base>
+<style>
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .split img { border-radius: var(--radius); width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .prose .btn { margin-top: 12px; }
+  .others { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .others a { display: block; background: #fff; padding: 10px 18px; border-radius: 40px; text-decoration: none; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .others a:hover { background: var(--brand); }
+  @media (max-width: 800px) { .split { grid-template-columns: 1fr; } }
+</style>

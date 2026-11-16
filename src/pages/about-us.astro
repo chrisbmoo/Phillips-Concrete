@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { Content, frontmatter } from '../content/about.md';
+---
+<Base title={frontmatter.title}>
+  <div class="page-head"><div class="wrap"><span class="eyebrow">{frontmatter.title}</span><h1>{frontmatter.heading}</h1></div></div>
+  <section><div class="wrap prose"><Content /></div></section>
+  <CallToAction />
+</Base>

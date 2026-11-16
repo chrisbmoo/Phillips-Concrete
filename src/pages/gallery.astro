@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { gallery } from '../lib/content.js';
+---
+<Base title="Gallery">
+  <div class="page-head"><div class="wrap"><h1>Gallery</h1><p>A selection of recent driveways, paths and slabs.</p></div></div>
+  <section>
+    <div class="wrap grid">
+      {gallery.map((g) => <a href={g.src} target="_blank"><img src={g.src} alt={g.alt} loading="lazy" /></a>)}
+    </div>
+  </section>
+  <CallToAction />
+</Base>
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius); transition: opacity .15s; }
+  .grid a:hover img { opacity: .85; }
+</style>
